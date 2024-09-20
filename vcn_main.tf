@@ -7,12 +7,7 @@ provider "oci" {
   region             = var.region
 }
 
-# Variables
-variable "tenancy_ocid" {}
-variable "user_ocid" {}
-variable "fingerprint" {}
-variable "private_key_path" {}
-variable "region" {}
+
 
 # Create VCNs and Subnets
 locals {
