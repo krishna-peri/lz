@@ -32,7 +32,7 @@ resource "oci_subnet" "subnet" {
   cidr_block   = each.value[0].cidr
   vcn_id       = oci_virtual_network.vcn[each.key].id
   compartment_id = var.comp_ocid  # Update to your compartment OCID
-  availability_domain = var.availability_domain # Update with your AD
+  
 }
 
 
