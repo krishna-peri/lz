@@ -12,7 +12,7 @@ provider "oci" {
 # Create VCNs and Subnets
 
 # Loop to create VCNs
-resource "oci_virtual_network" "vcn" {
+resource "oci_core_vcn" "vcn" {
   for_each = { for vcn in local.vcn_configs : vcn.name => vcn }
 
   display_name = each.value.name
@@ -23,7 +23,7 @@ resource "oci_virtual_network" "vcn" {
 }
 
 # Loop to create Subnets
-resource "oci_subnet" "subnet" {
+resource "oci_core_subnet" "subnet" {
   for_each = { for vcn in local.vcn_configs :vcn.name => {for subnet in vcn.subnets :subnet.name => subnet }
  }
   ###count = length(local.vcn_configs)
