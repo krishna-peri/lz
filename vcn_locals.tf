@@ -1,4 +1,5 @@
 locals {
+
   vcn_configs = [
     {
       name   = "iad-vcn-dmz"
