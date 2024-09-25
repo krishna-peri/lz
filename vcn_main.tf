@@ -17,7 +17,7 @@ resource "oci_virtual_network" "vcn" {
 
   display_name = each.value.name
   cidr_block   = each.value.cidr
-  compartment_id = var.comp_ocid  # Update to your compartment OCID
+  compartment_id = var.tenancy_ocid  # Update to your compartment OCID
   dns_label = each.value.dns_label
   
 }
@@ -31,7 +31,7 @@ resource "oci_subnet" "subnet" {
   display_name = each.value[0].name
   cidr_block   = each.value[0].cidr
   vcn_id       = oci_virtual_network.vcn[each.key].id
-  compartment_id = var.comp_ocid  # Update to your compartment OCID
+  compartment_id = var.tenancy_ocid  # Update to your compartment OCID
   
 }
 
