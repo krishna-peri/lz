@@ -61,23 +61,27 @@ locals {
       name   = "iad-vcn-np-custportal"
       cidr   = "135.136.132.0/26"
       subnets = [
-        { name = "subnet1-1", cidr = "10.0.1.0/24" },
-        { name = "subnet1-2", cidr = "10.0.2.0/24" }
+        { name = "iad-sn-np-custportal-db",cidr = "135.136.132.0/26" },
+        { name = "iad-sn-np-custportal-lb",cidr = "135.136.132.16/26" },
+        { name = "iad-sn-np-custportal-web",cidr = "135.136.132.32/26" },
+        { name = "iad-sn-np-custportal-app",cidr = "135.136.132.48/26" }
       ]
     },
 {
       name   = "iad-vcn-np-macc"
       cidr   = "135.136.132.128/26"
       subnets = [
-        { name = "subnet1-1", cidr = "10.0.1.0/24" },
-        { name = "subnet1-2", cidr = "10.0.2.0/24" }
+        { name = "iad-sn-np-macc-db", cidr = "135.136.132.128/28" },
+        { name = "iad-sn-np-macc-lb", cidr = "135.136.132.144/28" },
+        { name = "iad-sn-np-macc-app", cidr = "135.136.132.160/28" }
       ]
     },
       name   = "iad-vcn-np-soup"
       cidr   = "135.136.133.0/25"
       subnets = [
-        { name = "subnet1-1", cidr = "10.0.1.0/24" },
-        { name = "subnet1-2", cidr = "10.0.2.0/24" }
+        { name = "iad-sn-np-soup-db",cidr = "135.136.133.0/28" },
+        { name = "iad-sn-np-soup-lb",cidr = "135.136.133.32/28" },
+        { name = "iad-sn-np-soup-app",cidr = "135.136.133.64/27" }
       ]
     },
   ]
