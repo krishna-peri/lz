@@ -18,6 +18,7 @@ resource "oci_virtual_network" "vcn" {
   display_name = each.value.name
   cidr_block   = each.value.cidr
   compartment_id = var.tenancy_ocid  # Update to your compartment OCID
+  
 }
 
 # Loop to create Subnets
