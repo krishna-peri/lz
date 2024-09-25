@@ -1,5 +1,13 @@
 locals {
 
+  tenancy_ocid  = "ocid1.tenancy.oc1..aaaaaaaau7envib5zaflx5uew3o4hsd5b2g7fl3lgefoihirrmqblopb2wuq"  
+  user_ocid          = var.user_ocid
+  fingerprint        = var.fingerprint
+  private_key_path   = var.private_key_path
+  region             = var.region
+  net_cmp       = "ocid1.compartment.oc1..aaaaaaaach6ahicyfnq57ti53j4nd44usboryqhra63gelwuoaewwrgqn2hq"
+
+  
   vcn_configs = [
     {
       name   = "iad-vcn-dmz"
