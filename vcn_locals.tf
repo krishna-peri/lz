@@ -42,7 +42,7 @@ locals {
     {
       name   = "iad-vcn-pd-custportal"
       cidr   = "135.136.130.0/26"
-      dns_label = "iadpdcustportal
+      dns_label = "iadpdcustportal"
       subnets = [
         { name = "iad-sn-pd-custportal-db", cidr = "135.136.130.0/27" },
         { name = "iad-sn-pd-custportal-lb", cidr = "135.136.130.32/29" },
