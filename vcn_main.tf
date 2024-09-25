@@ -22,12 +22,7 @@ resource "oci_virtual_network" "vcn" {
 
 # Loop to create Subnets
 resource "oci_subnet" "subnet" {
-  for_each = {
-    for vcn in local.vcn_configs :
-    vcn.name => {
-      for subnet in vcn.subnets :
-      subnet.name => subnet
-    }
+  for_each = { for vcn in local.vcn_configs :vcn.name => {for subnet in vcn.subnets :subnet.name => subnet }
   }
   count = length(local.vcn_configs)
 
@@ -37,6 +32,30 @@ resource "oci_subnet" "subnet" {
   compartment_id = var.tenancy_ocid  # Update to your compartment OCID
   availability_domain = var.availability_domain # Update with your AD
 }
+
+resource "oci_core_security_list" "security_list" {
+     provider       = oci.variable
+    compartment_id = var.env_compartment_ocid
+    vcn_id = var.vnc_ocid
+    display_name = var.display_name
+
+    # #Optional
+    # defined_tags = {"Operations.CostCenter"= "42"}
+    # display_name = var.security_list_display_name
+    egress_security_rules {
+        #Required
+        destination = var.list_egress_security_dest
+        protocol = var.list_egress_security_protocol_dest
+        }
+    ingress_security_rules {
+        #Required
+        source = var.list_ingress_security_source
+        protocol = var.list_ingress_security_protocol_source
+        
+        }
+
+}
+
 
 output "vcn_ids" {
   value = oci_virtual_network.vcn.*.id
