@@ -30,15 +30,15 @@ resource "oci_core_subnet" "subnet" {
 
   display_name = each.value[0].name
   cidr_block   = each.value[0].cidr
-  vcn_id       = oci_virtual_network.vcn[each.key].id
+  vcn_id       = oci_core_vcn.vcn[each.key].id
   compartment_id = var.tenancy_ocid  # Update to your compartment OCID
   
 }
 
 output "vcn_ids" {
-  value = oci_virtual_network.vcn.*.id
+  value = oci_core_vcn.vcn.*.id
 }
 
 output "subnet_ids" {
-  value = oci_subnet.subnet.*.id
+  value = oci_core_subnet.subnet.*.id
 }
