@@ -33,8 +33,9 @@ resource "oci_core_subnet" "subnet" {
   cidr_block   = each.value.subnet.cidr
   vcn_id       = oci_core_vcn.vcn[each.key].id
   compartment_id = var.tenancy_ocid  # Update to your compartment OCID
-  
-}
+
+
+  }
 
 output "vcn_ids" {
   value = oci_core_vcn.vcn.*.id
@@ -43,3 +44,8 @@ output "vcn_ids" {
 output "subnet_ids" {
   value = oci_core_subnet.subnet.*.id
 }
+
+
+output "subnets_name" {
+value = { for vcn in local.vcn_configs :vcn.name => {for subnet in vcn.subnets :subnet.name => subnet }
+ }
