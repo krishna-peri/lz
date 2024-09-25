@@ -91,6 +91,7 @@ locals {
         { name = "iad-sn-np-macc-app", cidr = "135.136.132.160/28" }
       ]
     },
+{
       name   = "iad-vcn-np-soup"
       cidr   = "135.136.133.0/25"
       dns_label = "iadnpsoup"
@@ -99,7 +100,8 @@ locals {
         { name = "iad-sn-np-soup-lb",cidr = "135.136.133.32/28" },
         { name = "iad-sn-np-soup-app",cidr = "135.136.133.64/27" }
       ]
-    },
+    }
+]
   
 list_egress_security_dest             = "0.0.0.0/0"
 list_egress_security_protocol_dest    = "all"
