@@ -1,10 +1,10 @@
 provider "oci" {
   # Set your credentials here or use a config file
-  comp_ocid          = var.comp_ocid
-  user_ocid          = var.user_ocid
-  fingerprint        = var.fingerprint
-  private_key_path   = var.private_key_path
-  region             = var.region
+  comp_ocid          = local.comp_ocid
+  user_ocid          = local.user_ocid
+  fingerprint        = local.fingerprint
+  private_key_path   = local.private_key_path
+  region             = local.region
 }
 
 
