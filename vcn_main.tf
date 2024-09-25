@@ -49,3 +49,4 @@ output "subnet_ids" {
 output "subnets_name" {
 value = { for vcn in local.vcn_configs :vcn.name => {for subnet in vcn.subnets :subnet.name => subnet }
  }
+}
