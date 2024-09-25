@@ -28,9 +28,9 @@ resource "oci_core_subnet" "subnet" {
  }
   ###count = length(local.vcn_configs)
   #display_name = each.value[0].name
-  display_name = each.value.name
+  display_name = each.value.subnet.name
   #cidr_block   = each.value[0].cidr
-  cidr_block   = each.value.cidr
+  cidr_block   = each.value.subnet.cidr
   vcn_id       = oci_core_vcn.vcn[each.key].id
   compartment_id = var.tenancy_ocid  # Update to your compartment OCID
   
