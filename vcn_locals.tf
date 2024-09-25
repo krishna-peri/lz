@@ -52,8 +52,9 @@ locals {
       name   = "iad-vcn-pd-soup"
       cidr   = "135.136.130.128/26"
       subnets = [
-        { name = "subnet1-1", cidr = "10.0.1.0/24" },
-        { name = "subnet1-2", cidr = "10.0.2.0/24" }
+        { name =  "iad-sn-pd-soup-db",cidr = "135.136.130.128/29"},
+        { name =  "iad-sn-pd-soup-lb",cidr = "135.136.130.144/28"},
+        { name =  "iad-sn-pd-soup-app",cidr = "135.136.130.160/28"}
       ]
     },
     {
