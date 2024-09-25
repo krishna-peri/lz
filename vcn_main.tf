@@ -10,26 +10,6 @@ provider "oci" {
 
 
 # Create VCNs and Subnets
-locals {
-  vcn_configs = [
-    {
-      name   = "vcn1"
-      cidr   = "10.0.0.0/16"
-      subnets = [
-        { name = "subnet1-1", cidr = "10.0.1.0/24" },
-        { name = "subnet1-2", cidr = "10.0.2.0/24" }
-      ]
-    },
-    {
-      name   = "vcn2"
-      cidr   = "10.1.0.0/16"
-      subnets = [
-        { name = "subnet2-1", cidr = "10.1.1.0/24" },
-        { name = "subnet2-2", cidr = "10.1.2.0/24" }
-      ]
-    }
-  ]
-}
 
 # Loop to create VCNs
 resource "oci_virtual_network" "vcn" {
