@@ -4,8 +4,8 @@ locals {
   user_ocid          = var.user_ocid
   fingerprint        = var.fingerprint
   private_key_path   = var.private_key_path
-  region             = var.region
-  net_cmp       = "ocid1.compartment.oc1..aaaaaaaach6ahicyfnq57ti53j4nd44usboryqhra63gelwuoaewwrgqn2hq"
+  region             = us-ashburn-1
+  comp_ocid       =  "ocid1.compartment.oc1..aaaaaaaafgnmba62o5ubvvkxmjzvagaeefs7wp6xcquh36bapdhctmndcpaa"
 
   
   vcn_configs = [
