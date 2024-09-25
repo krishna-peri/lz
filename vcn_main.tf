@@ -1,6 +1,5 @@
 provider "oci" {
   # Set your credentials here or use a config file
-  comp_ocid          = local.comp_ocid
   user_ocid          = local.user_ocid
   fingerprint        = local.fingerprint
   private_key_path   = local.private_key_path
