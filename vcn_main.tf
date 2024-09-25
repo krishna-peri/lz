@@ -26,7 +26,7 @@ resource "oci_virtual_network" "vcn" {
 resource "oci_subnet" "subnet" {
   for_each = { for vcn in local.vcn_configs :vcn.name => {for subnet in vcn.subnets :subnet.name => subnet }
  }
-  count = length(local.vcn_configs)
+  ###count = length(local.vcn_configs)
 
   display_name = each.value[0].name
   cidr_block   = each.value[0].cidr
