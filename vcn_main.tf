@@ -33,10 +33,12 @@ resource "oci_subnet" "subnet" {
   availability_domain = var.availability_domain # Update with your AD
 }
 
+
 resource "oci_core_security_list" "security_list" {
+  for_each = { for vcn in local.vcn_configs :vcn.name => {for subnet in vcn.subnets :subnet.name => subnet }}
      provider       = oci.variable
     compartment_id = var.env_compartment_ocid
-    vcn_id = var.vnc_ocid
+    vcn_id = oci_virtual_network.vcn[each.key].id
     display_name = var.display_name
 
     # #Optional
