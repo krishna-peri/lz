@@ -100,10 +100,10 @@ locals {
         { name = "iad-sn-np-soup-app",cidr = "135.136.133.64/27" }
       ]
     },
-  ]
-}
-
+  
 list_egress_security_dest             = "0.0.0.0/0"
 list_egress_security_protocol_dest    = "all"
 list_ingress_security_source          = "0.0.0.0/0"
 list_ingress_security_protocol_source = "all"
+
+}
