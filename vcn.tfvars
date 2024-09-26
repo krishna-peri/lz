@@ -7,13 +7,13 @@ default = [
       vcn_label = "iaddmz"
       subnets = [
         {
-        display_name = "iad-sn-np-openam-lb"
+        name = "iad-sn-np-openam-lb"
         cidr_block   = "135.136.129.0/29"
         is_public = false
         }
           
       {
-        display_name = "Subnet2_VCN1"          
+        name = "Subnet2_VCN1"          
         cidr_block   = "135.136.129.8/29"
         is_public = true  
       }
