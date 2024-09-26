@@ -9,13 +9,13 @@ default = [
         {
         name = "iad-sn-np-openam-lb"
         cidr_block   = "135.136.129.0/29"
-        is_public = false
+        is_public = "false"
         }
           
       {
         name = "Subnet2_VCN1"          
         cidr_block   = "135.136.129.8/29"
-        is_public = true  
+        is_public = "true"  
       }
       ]
     ]
