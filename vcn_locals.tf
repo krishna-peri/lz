@@ -24,6 +24,7 @@ locals {
       ]
     }
 
-      subnet_list = [for key, subnet in local.vcn_configs : { cidr_block = subnets.cidr display_name = subnets.name }
+      subnet_list = [for key, subnet in local.vcn_configs : { cidr_block = subnets.cidr
+      display_name = subnets.name }
     ]
   ]
