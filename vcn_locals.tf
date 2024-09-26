@@ -14,12 +14,12 @@ locals {
         subnet1 = {
           cidr_block   = "135.136.129.0/29"
           display_name = "iad-sn-np-openam-lb"
-          type = public
+          type = false
         }
         subnet2 = {
           cidr_block   = "135.136.129.8/29"
           display_name = "Subnet2_VCN1"
-          type = private
+          type = true
         }
       }
     }
