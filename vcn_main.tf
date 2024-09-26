@@ -11,31 +11,24 @@ provider "oci" {
 
 # Create VCNs and Subnets
 
-# Loop to create VCNs
 resource "oci_core_vcn" "vcn" {
-  for_each = { for vcn in local.vcn_configs : vcn.name => vcn }
+  count = length(local.vcn_configs)
 
-  display_name = each.value.name
-  cidr_block   = each.value.cidr
+  display_name = local.vcn_configs[count.index].local.vcn_configs.vcn_name
+  cidr_block   = local.vcn_configs[count.index].local.vcn_configs.cidr
   compartment_id = var.tenancy_ocid  # Update to your compartment OCID
-  dns_label = each.value.dns_label
-  
+  dns_label = local.vcn_configs[count.index].local.vcn_configs.label
+
+dynamic "subnet" {
+    for_each = local.vcn_configs[count.index].subnets
+        content {
+      display_name           = subnet.value.name
+      cidr_block             = subnet.value.cidr
+      compartment_id = var.tenancy_ocid
+    }
+  }  
+
 }
-
-
-# Loop to create Subnets
-resource "oci_core_subnet" "subnet" {
-  #for_each = { for vcn in local.vcn_configs :vcn.name => {for subnet in vcn.subnets :subnet.name => subnet } }
-
-for_each = { for vcn in local.vcn_configs:vcn.subnet.name => subnet }
-  ###count = length(local.vcn_configs)
-  display_name = each.value[0].name
-  cidr_block   = each.value[0].cidr
-  vcn_id       = oci_core_vcn.vcn[each.key].id
-  compartment_id = var.tenancy_ocid  # Update to your compartment OCID
-
-
-  }
 
 output "vcn_ids" {
   value = oci_core_vcn.vcn.*.id
@@ -46,7 +39,3 @@ output "subnet_ids" {
 }
 
 
-output "subnets_name" {
-value = { for vcn in local.vcn_configs :vcn.name => {for subnet in vcn.subnets :subnet.name => subnet }
- }
-}
