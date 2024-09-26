@@ -21,6 +21,11 @@ resource "oci_core_vcn" "vcn" {
   dns_label = each.value.dns_label
   
 }
+module "intermediate_module" {
+  count  = var.should_create ? 1 : 0
+  source = "./conditional_module"
+  properties = var.properties
+}
 
 # Loop to create Subnets
 resource "oci_core_subnet" "subnet" {
