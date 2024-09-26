@@ -16,7 +16,7 @@ locals {
                   name = vcn_config["name"]
                   subnet_name = subnet["name"]
                   cidr_block = subnet["cidr_block"]
-                  is_public - subnet["is_public"]
+                  type = subnet["is_public"]
               }
          }
       ]...)
