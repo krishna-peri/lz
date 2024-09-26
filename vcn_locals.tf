@@ -25,7 +25,6 @@ locals {
     }
   }
 
-
     
   
 list_egress_security_dest             = "0.0.0.0/0"
