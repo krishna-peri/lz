@@ -9,7 +9,7 @@ resource "oci_core_vcn" "vcns" {
 resource "oci_core_subnet" "subnets" {
   for_each = { for idx, subnet in local.subnet_details : idx => subnet }
   cidr_block     = each.value.cidr_block
-  vcn_id         = oci_core_vcn[each.value.key].id
+  vcn_id         = oci_core_vcn.vcns.[each.value.vcn_key].id
   compartment_id = local.tenancy_ocid
   display_name   = each.value.display_name
   prohibit_public_ip_on_vnic = each.value.type
