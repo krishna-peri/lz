@@ -38,7 +38,7 @@ resource "oci_core_vcn" "vcn" {
   ##}
 
 output "vcn_ids" {
-  value = oci_core_vcn.vcn.[*].id
+  value = oci_core_vcn.vcn.[*].id.
 }
 
 ##output "subnet_ids" {
