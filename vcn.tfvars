@@ -1,4 +1,4 @@
-variable vcns = {
+variable vcns  {
 description = "List of VCN"
 type        = list(map(any))
 default = [
