@@ -3,7 +3,7 @@ resource "oci_core_vcn" "vcns" {
   cidr_block     = each.value.cidr_block
   compartment_id = local.tenancy_ocid
   display_name   = each.key
-  dns_label      = local.
+  dns_label      = each.value.vcn_label
 }
 
 resource "oci_core_subnet" "subnets" {
