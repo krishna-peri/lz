@@ -24,19 +24,17 @@ resource "oci_core_vcn" "vcn" {
 
 
 # Loop to create Subnets
-###resource "oci_core_subnet" "subnet" {
+resource "oci_core_subnet" "subnet" {
  
-  for_each = { for vcn in local.vcn_configs : vcn.name => {for subnet,cidr in vcn.subnets : subnets.name => subnet : subnets.cidr => cidr } }
-  }
+  ##for_each = { for vcn in local.vcn_configs : vcn.name => {for subnet,cidr in vcn.subnets : subnets.name => subnet : subnets.cidr => cidr } }
   
-  ###count = length(local.vcn_configs)
-  ####display_name = each.value[0].name
-  #####cidr_block   = each.value[0].cidr
-  ###vcn_id       = oci_core_vcn.vcn[each.key].id
-  ####compartment_id = var.tenancy_ocid  # Update to your compartment OCID
+  for_each = { for idx, subnet in local.subnet_list : idx => subnet }
+  cidr_block     = each.value.cidr_block
+  vcn_id         = oci_core_vcn.vcn.id
+  compartment_id = var.tenancy_ocid
+  display_name   = each.value.display_name
 
-
-  ##}
+  }
 
 #output "vcn_ids" {
   #value = oci_core_vcn.vcn.[*].id.
