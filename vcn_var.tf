@@ -13,4 +13,7 @@ variable "vcns" {
       type = string # "public" or "private"
     }))
   }))
+variable "compartment_id" {
+  type = string
+}
 
