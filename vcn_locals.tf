@@ -13,16 +13,17 @@ locals {
       cidr   = "135.136.129.0/26"
       dns_label = "iaddmz"
       subnets = [
-        { name = "iad-sn-mgmt-pub", cidr = "135.136.129.0/29" },
-        { name = "iad-sn-ha-prv", cidr = "135.136.129.8/29" },
-        { name = "iad-sn-trust-prv", cidr = "135.136.129.16/29" },
-        { name = "iad-sn-untrust-pub", cidr = "135.136.129.32/28" }
+        { name = "iad-sn-mgmt-pub" 
+          cidr = "135.136.129.0/29" },
+        { name = "iad-sn-ha-prv" 
+          cidr = "135.136.129.8/29" },
+        { name = "iad-sn-trust-prv" 
+          cidr = "135.136.129.16/29" },
+        { name = "iad-sn-untrust-pub" 
+          cidr = "135.136.129.32/28" }
       ]
     }
 
-      subnet_list = [for key, subnet in var.vcn_configs : {
-      cidr_block   = subnets.cidr
-      display_name   = subnets.name
-      }
+      subnet_list = [for key, subnet in var.vcn_configs : { cidr_block = subnets.cidr display_name = subnets.name }
     ]
   ]
