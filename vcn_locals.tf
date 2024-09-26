@@ -6,7 +6,7 @@ locals {
   region             = "us-ashburn-1"
   ###comp_ocid       =  "ocid1.compartment.oc1..aaaaaaaafgnmba62o5ubvvkxmjzvagaeefs7wp6xcquh36bapdhctmndcpaa"
 
-  
+  vcns = {
  iad-vcn-dmz = {
       cidr_block = "135.136.129.0/26"
       vcn_label = iaddmz
@@ -25,6 +25,18 @@ locals {
     }
   }
 
+
+subnet_details = flatten([
+    for vcn_key, vcn in local.vcns : [
+      for subnet_key, subnet in vcn.subnets : {
+        vcn_key       = vcn_key
+        subnet_key    = subnet_key
+        cidr_block    = subnet.cidr_block
+        display_name  = subnet.display_name
+        type          = subnet.type
+      }
+    ]
+  ])
     
   
 list_egress_security_dest             = "0.0.0.0/0"
