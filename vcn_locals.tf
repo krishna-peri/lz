@@ -9,7 +9,7 @@ locals {
   vcns = {
  iad-vcn-dmz = {
       cidr_block = "135.136.129.0/26"
-      vcn_label = iaddmz
+      vcn_label = "iaddmz"
       subnets = {
         subnet1 = {
           cidr_block   = "135.136.129.0/29"
