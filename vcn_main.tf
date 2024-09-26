@@ -26,7 +26,7 @@ resource "oci_core_vcn" "vcn" {
 # Loop to create Subnets
 ###resource "oci_core_subnet" "subnet" {
  
-  for _each = { for vcn in local.vcn_configs :vcn.name => {for subnet,cidr in vcn.subnets : subnet.name => subnet } }
+  for_each = { for vcn in local.vcn_configs : vcn.name => {for subnet,cidr in vcn.subnets : subnets.name => subnet : subnets.cidr => cidr } }
   }
   
   ###count = length(local.vcn_configs)
