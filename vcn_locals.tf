@@ -9,7 +9,7 @@ locals {
   
   vcn_configs = [
     {
-      name   = "iad-vcn-dmz"
+      vcnname   = "iad-vcn-dmz"
       cidr   = "135.136.129.0/26"
       dns_label = "iaddmz"
       subnets = [
@@ -40,7 +40,7 @@ locals {
       ]
     },
     {
-      name   = "iad-vcn-pd-custportal"
+      vcnname   = "iad-vcn-pd-custportal"
       cidr   = "135.136.130.0/26"
       dns_label = "iadpdcustportal"
       subnets = [
@@ -52,7 +52,7 @@ locals {
     },
     
     {
-      name   = "iad-vcn-pd-macc"
+      vcnname   = "iad-vcn-pd-macc"
       cidr   = "135.136.130.64/26"
       dns_label = "iadpdmacc"
       subnets = [
@@ -61,7 +61,7 @@ locals {
       ]
     },
     {
-      name   = "iad-vcn-pd-soup"
+      vcnname   = "iad-vcn-pd-soup"
       cidr   = "135.136.130.128/26"
       dns_label = "iadpdsoup"
       subnets = [
@@ -71,7 +71,7 @@ locals {
       ]
     },
     {
-      name   = "iad-vcn-np-custportal"
+      vcnname   = "iad-vcn-np-custportal"
       cidr   = "135.136.132.0/26"
       dns_label = "iadnpcustportal"
       subnets = [
@@ -82,7 +82,7 @@ locals {
       ]
     },
 {
-      name   = "iad-vcn-np-macc"
+      vcnname   = "iad-vcn-np-macc"
       cidr   = "135.136.132.128/26"
       dns_label = "iadnpmacc"
       subnets = [
@@ -92,7 +92,7 @@ locals {
       ]
     },
 {
-      name   = "iad-vcn-np-soup"
+      vcnname   = "iad-vcn-np-soup"
       cidr   = "135.136.133.0/25"
       dns_label = "iadnpsoup"
       subnets = [
