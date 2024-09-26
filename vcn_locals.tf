@@ -27,7 +27,7 @@ locals {
 
 
 subnet_details = flatten([
-    for vcn_key, vcn in var.vcns : [
+    for vcn_key, vcn in local.vcns : [
       for subnet_key, subnet in vcn.subnets : {
         vcn_key       = vcn_key
         subnet_key    = subnet_key
