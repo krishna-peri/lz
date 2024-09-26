@@ -68,7 +68,7 @@ locals {
       cidr   = "135.136.130.128/26"
       dns_label = "iadpdsoup"
       subnets = [
-        { name =  "iad-sn-pd-soup-db cidr = "135.136.130.128/29"},
+        { name =  "iad-sn-pd-soup-db" cidr = "135.136.130.128/29"},
         { name =  "iad-sn-pd-soup-lb" cidr = "135.136.130.144/28"},
         { name =  "iad-sn-pd-soup-app" cidr = "135.136.130.160/28"}
       ]
