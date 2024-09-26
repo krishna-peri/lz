@@ -14,7 +14,7 @@ provider "oci" {
 resource "oci_core_vcn" "vcn" {
   count = length(local.vcn_configs)
 
-  display_name = local.vcn_configs[count.index].local.vcn_configs.vcn_name
+  display_name = local.vcn_configs[count.index].local.vcn_configs.vcnname
   cidr_block   = local.vcn_configs[count.index].local.vcn_configs.cidr
   compartment_id = var.tenancy_ocid  # Update to your compartment OCID
   dns_label = local.vcn_configs[count.index].local.vcn_configs.label
