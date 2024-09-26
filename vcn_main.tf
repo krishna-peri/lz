@@ -36,15 +36,7 @@ resource "oci_core_subnet" "subnet" {
 
   }
 
-#output "vcn_ids" {
-  #value = oci_core_vcn.vcn.[*].id.
-#}
 
-##output "subnet_ids" {
-  ##value = oci_core_subnet.subnet.*.id
-##}
 
-output "list" {
-  value = snlist.[*]
-}
+
 
