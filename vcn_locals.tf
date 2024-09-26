@@ -5,19 +5,4 @@ locals {
   private_key_path   = "kp.pem"
   region             = "us-ashburn-1"
   ###comp_ocid       =  "ocid1.compartment.oc1..aaaaaaaafgnmba62o5ubvvkxmjzvagaeefs7wp6xcquh36bapdhctmndcpaa"
-
-
- flat_vcn_configurations = merge([
-         for vcn_config in var.vcns :
-         {
-             for subnet in vcn_config["subnet"]:
-             "${vcn_config["name"]}-${subnet["name"]}" =>
-              {
-                  name = vcn_config["name"]
-                  subnet_name = subnet["name"]
-                  cidr_block = subnet["cidr_block"]
-                  type = subnet["is_public"]
-              }
-         }
-      ]...)
 }
