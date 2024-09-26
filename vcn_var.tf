@@ -13,5 +13,5 @@ variable "vcns" {
       type = string # "public" or "private"
     }))
   }))
-}
+} = local.vcns
 
