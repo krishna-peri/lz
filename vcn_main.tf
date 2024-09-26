@@ -19,9 +19,9 @@ resource "oci_core_vcn" "vcn" {
   compartment_id = var.tenancy_ocid  # Update to your compartment OCID
   dns_label = local.vcn_configs[count.index].local.vcn_configs.label
 
-dynamic "oci_core_subnet" {
-    for_each = local.vcn_configs[count.index].subnets
-        content {
+    dynamic "subnets" {
+      for_each = local.vcn_configs[count.index].subnets
+      resource "oci_core_subnet" "subnet" {
       display_name           = subnet.value.name
       cidr_block             = subnet.value.cidr
       compartment_id = var.tenancy_ocid
