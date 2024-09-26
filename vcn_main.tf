@@ -12,8 +12,6 @@ resource "oci_core_subnet" "subnets" {
   vcn_id         = oci_core_vcn[each.value.vcn_key].id
   compartment_id = local.tenancy_ocid
   display_name   = each.value.display_name
-  security_list_ids = [oci_core_security_list.security_lists[each.value.vcn_key].id]
-  route_table_id    = oci_core_route_table.route_tables[each.value.vcn_key].id
   prohibit_public_ip_on_vnic = each.value.type
   
 }
