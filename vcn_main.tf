@@ -6,6 +6,23 @@ foreach = { for v in var.vcns : v.name => v }
   dns_label      = each.value.vcn_label
 }
 
+locals {
+
+flat_vcn_configurations = merge([
+         for vcn_config in var.vcns :
+         {
+             for subnet in vcn_config["subnet"]:
+             "${vcn_config["name"]}-${subnet["name"]}" =>
+              {
+                  name = vcn_config["name"]
+                  subnet_name = subnet["name"]
+                  cidr_block = subnet["cidr_block"]
+                  type = subnet["is_public"]
+              }
+         }
+      ]...)
+}
+
 resource "oci_core_subnet" "subnets" {
   #for_each = { for v in var.vcns , s in v.subnets : "${v.name}-${s.name}" => "s" }
   for_each= local.flat_vcn_configurations
