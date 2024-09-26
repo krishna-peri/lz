@@ -19,8 +19,7 @@ locals {
         { name = "iad-sn-untrust-pub",cidr = "135.136.129.32/28" }
       ]
     }
-
-      subnet_list = [for key, subnet in local.vcn_configs : { display_name = subnets.name ,cidr_block = subnets.cidr
-      }
-    ]
   ]
+      subnet_list = [ for key, subnet in local.vcn_configs : { display_name = subnets.name ,cidr_block = subnets.cidr }
+    ]
+  }
