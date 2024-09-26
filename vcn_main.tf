@@ -1,6 +1,5 @@
 resource "oci_core_vcn" "vcn" {
 for_each = { for v in var.vcns : v.name => v }
-  for_each       = local.vcns
   cidr_block     = each.value.cidr_block
   compartment_id = local.tenancy_ocid
   display_name   = each.key
