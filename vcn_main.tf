@@ -1,3 +1,26 @@
+variable vcns  {
+description = "List of VCN"
+type        = list(map(any))
+default = [
+      name  = "iad-vcn-dmz" 
+      cidr_block = "135.136.129.0/26"
+      vcn_label = "iaddmz"
+      subnets = [
+        {
+        name = "iad-sn-np-openam-lb"
+        cidr_block   = "135.136.129.0/29"
+        is_public = false
+        }
+          
+      {
+        name = "Subnet2_VCN1"          
+        cidr_block   = "135.136.129.8/29"
+        is_public = true  
+      }
+      ]
+    ]
+  }
+
 resource "oci_core_vcn" "vcn" {
 for_each = { for v in var.vcns : v.name => v }
   cidr_block     = each.value.cidr_block
