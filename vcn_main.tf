@@ -1,5 +1,5 @@
 resource "oci_core_vcn" "vcn" {
-for_each = { for v in var.vcns : v.name => v }
+foreach = { for v in var.vcns : v.name => v }
   cidr_block     = each.value.cidr_block
   compartment_id = local.tenancy_ocid
   display_name   = each.value.name
