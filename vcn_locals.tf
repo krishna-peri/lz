@@ -7,18 +7,25 @@ locals {
   ###comp_ocid       =  "ocid1.compartment.oc1..aaaaaaaafgnmba62o5ubvvkxmjzvagaeefs7wp6xcquh36bapdhctmndcpaa"
 
   
-  vcn_configs = [
-    {
-      vcnname   = "iad-vcn-dmz"
-      cidr   = "135.136.129.0/26"
-      dns_label = "iaddmz"
-      subnets = [
-        { name = "iad-sn-mgmt-pub" cidr = "135.136.129.0/29" },
-        { name = "iad-sn-ha-prv" cidr = "135.136.129.8/29" },
-        { name = "iad-sn-trust-prv" cidr = "135.136.129.16/29" },
-        { name = "iad-sn-untrust-pub" cidr = "135.136.129.32/28" }
-      ]
+ iad-vcn-dmz = {
+      cidr_block = "135.136.129.0/26"
+      vcn_label = iaddmz
+      subnets = {
+        subnet1 = {
+          cidr_block   = "135.136.129.0/29"
+          display_name = "iad-sn-np-openam-lb"
+          type = public
+        }
+        subnet2 = {
+          cidr_block   = "135.136.129.8/29"
+          display_name = "Subnet2_VCN1"
+          type = private
+        }
+      }
     }
+  }
+
+
     
   
 list_egress_security_dest             = "0.0.0.0/0"
