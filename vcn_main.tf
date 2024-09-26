@@ -1,7 +1,7 @@
 resource "oci_core_vcn" "vcns" {
   for_each       = local.vcns
   cidr_block     = each.value.cidr_block
-  compartment_id = var.tenancy_id
+  compartment_id = local.tenancy_ocid
   display_name   = each.key
 }
 
