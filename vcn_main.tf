@@ -1,4 +1,5 @@
-resource "oci_core_vcn" "vcns" {
+resource "oci_core_vcn" "vcn" {
+for_each = { for v in var.vcns : v.name => v }
   for_each       = local.vcns
   cidr_block     = each.value.cidr_block
   compartment_id = local.tenancy_ocid
@@ -7,7 +8,8 @@ resource "oci_core_vcn" "vcns" {
 }
 
 resource "oci_core_subnet" "subnets" {
-  for_each = { for idx, subnet in local.subnet_details : idx => subnet }
+  for_each = { for v in var.vcns, s in v.subnets : "${v.name}-${s.name}" => s }
+  vcn_id     = oci_core_vcn.vcn[split("-", each.key)[0]].id
   cidr_block     = each.value.cidr_block
   vcn_id         = oci_core_vcn[each.value.vcn_key].id
   compartment_id = local.tenancy_ocid
@@ -15,3 +17,4 @@ resource "oci_core_subnet" "subnets" {
   prohibit_public_ip_on_vnic = each.value.type
   
 }
+
