@@ -20,4 +20,8 @@ locals {
       ]
     }
 
+subnet_list = [for key, subnet in var.subnets : {
+    cidr_block   = subnet.cidr
+    display_name = subnet.name
+
 ]
