@@ -9,17 +9,18 @@ locals {
   
   vcn_configs = [
     {
-      name   = "iad-vcn-dmz"
-      cidr   = "135.136.129.0/26"
-      dns_label = "iaddmz"
-      subnets = [
-        { name = "iad-sn-mgmt-pub",cidr = "135.136.129.0/29" },
-        { name = "iad-sn-ha-prv",cidr = "135.136.129.8/29" },
-        { name = "iad-sn-trust-prv",cidr = "135.136.129.16/29" },
-        { name = "iad-sn-untrust-pub",cidr = "135.136.129.32/28" }
+      iad-vcn-dmz" = {
+                        cidr   = "135.136.129.0/26"
+                        dns_label = "iaddmz"
+                  subnets = [
+                   { name = "iad-sn-mgmt-pub",cidr = "135.136.129.0/29" },
+                   { name = "iad-sn-ha-prv",cidr = "135.136.129.8/29" },
+                   { name = "iad-sn-trust-prv",cidr = "135.136.129.16/29" },
+                   { name = "iad-sn-untrust-pub",cidr = "135.136.129.32/28" }
       ]
     }
-  ]
+  }
+]
       subnet_list = [ for key, subnet in local.vcn_configs : { display_name = local.vcn_configs.subnets.name ,cidr_block = local.vcn_configs.subnets.cidr }
     ]
   }
